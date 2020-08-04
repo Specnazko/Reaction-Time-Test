@@ -33,32 +33,31 @@ function processingResults () {
     let fullError = 0;
 
     const calcSampleMean = () => {
-        let tempResults = [];
+        let tempResultsMean = [];
         for (let i=0; i<resultsCorrecr.length; i++) {
-            tempResults[i] = resultsCorrecr[i];        
+            tempResultsMean[i] = resultsCorrecr[i];        
         }
         let sum = 0;
-        for (let i=0; i<tempResults.length; i++) {
-            sum += resultsCorrecr[i];
+        for (let i=0; i<tempResultsMean.length; i++) {
+            sum += tempResultsMean[i];
         }
-        sampleMean =  Math.floor(sum/tempResults.length);
-        console.log (tempResults);
-        console.log (sampleMean);
+        sampleMean =  Math.floor(sum/tempResultsMean.length);
     }
 
     calcSampleMean();
 
     const calcVariance = () => {
-        let tempResults = [];
+        let tempResultsVar = [];
         for (let i=0; i<resultsCorrecr.length; i++) {
-            tempResults[i] = resultsCorrecr[i];        
+            tempResultsVar[i] = resultsCorrecr[i];        
         }
         let sum = 0;
-        for (let i=0; i<tempResults.length; i++) {
-            sum += (results[i]-sampleMean) * (results[i]-sampleMean);
+        for (let i=0; i<tempResultsVar.length; i++) {
+            sum += (tempResultsVar[i]-sampleMean) * (tempResultsVar[i]-sampleMean);
         }
-        variance = Math.floor(Math.sqrt(sum/(tempResults.length-1)));
+        variance = Math.floor(Math.sqrt(sum/(tempResultsVar.length-1)));
         grossError = variance * 2;
+        
     }
 
     calcVariance ();
@@ -96,7 +95,7 @@ function processingResults () {
         let tempResults = resultsCorrecr.slice();
         let sum = 0;
         for (let i=0; i<tempResults.length; i++) {
-            sum += (results[i]-sampleMean) * (results[i]-sampleMean);
+            sum += (tempResults[i]-sampleMean) * (tempResults[i]-sampleMean);
         }
         standardError =  Math.floor(Math.sqrt(sum/(tempResults.length * (tempResults.length-1))));
     }
