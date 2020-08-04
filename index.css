@@ -1,0 +1,40 @@
+body {
+    color: white;
+    background: #1d78c2;
+    cursor: pointer;
+}
+
+.conteiner {
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    height: 100vh;
+}
+
+.text {
+    margin-top: 350px;
+    font-size: 25px;
+    font-family: Source Sans Pro,sans-serif;
+}
+
+.results {
+    display: none;
+    margin: 20px;
+}
+
+.uRes {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.allRes {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.error {
+    font-weight: 600;
+    margin-top: 5px;
+    font-size: 20px;
+}
