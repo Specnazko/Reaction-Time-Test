@@ -6,6 +6,7 @@ const text = document.querySelector('.text');
 const conteiner = document.querySelector('.conteiner');  
 const resultsCont = document.querySelector('.results');  
 
+let timerId = 0;
 let results = [];
 let resultsCorrecr = [];
 let flag = 0;
@@ -134,8 +135,7 @@ function processingResults () {
 
 
 function timeTest (e) {
-    
-
+    clearTimeout(timerId);
     if (e.target.matches('.conteiner') || e.target.matches('.text')){
         if (!flag) {
             
@@ -151,7 +151,7 @@ function timeTest (e) {
                 timerStart = Math.floor(performance.now());
             }
 
-            let timerId = setTimeout (timer, greenTime); 
+            timerId = setTimeout (timer, greenTime); 
 
             if (counter>=10) {
                 processingResults ();
@@ -162,7 +162,7 @@ function timeTest (e) {
             
             flag = 0;
             body.style.background = '#446580';
-            if (colorFlag && timerStart == 0) {
+            if (colorFlag) {
                 colorFlag = 0;
                 let timeEnd = Math.floor(performance.now()) - timerStart;
                 results[counter] = timeEnd;
@@ -171,9 +171,8 @@ function timeTest (e) {
                 timerStart = 0;
                 timeEnd = 0;
             } else {
-                clearTimeout(timerId);
                 text.innerHTML=`Too soon! Tap to try again...`;
-                
+
             }
         }
 
