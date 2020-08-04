@@ -134,6 +134,7 @@ function processingResults () {
 
 
 function timeTest (e) {
+    
 
     if (e.target.matches('.conteiner') || e.target.matches('.text')){
         if (!flag) {
@@ -161,7 +162,7 @@ function timeTest (e) {
             
             flag = 0;
             body.style.background = '#446580';
-            if (colorFlag) {
+            if (colorFlag && timerStart == 0) {
                 colorFlag = 0;
                 let timeEnd = Math.floor(performance.now()) - timerStart;
                 results[counter] = timeEnd;
@@ -170,7 +171,9 @@ function timeTest (e) {
                 timerStart = 0;
                 timeEnd = 0;
             } else {
+                clearTimeout(timerId);
                 text.innerHTML=`Too soon! Tap to try again...`;
+                
             }
         }
 
